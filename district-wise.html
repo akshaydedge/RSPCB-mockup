@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punjab Districts - Air Quality Index</title>
+    <title>Rajasthan Districts - Air Quality Indexr</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -191,8 +191,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>Punjab Districts - Air Quality Index (AQI)</h1>
-            <p class="subtitle">Real-time air quality data across all districts of Punjab</p>
+            <h1>Rajasthan Districts - Air Quality Indexr (AQI)</h1>
+            <p class="subtitle">Illustrative air quality data across selected districts of Rajasthan</p>
             <div class="aqi-legend">
                 <div class="legend-item">
                     <div class="legend-color" style="background-color: #4CAF50;"></div> Good (0-50)
@@ -245,37 +245,37 @@
         </div>
 
         <footer>
-            <p>Data Source: Punjab Pollution Control Board | Last Updated: November 2025</p>
+            <p>Demo / Illustrative Data | Rajasthan State Pollution Control Board Dashboard</p>
             <p>Note: AQI values are based on PM2.5 and PM10 particulate matter concentrations</p>
         </footer>
     </div>
 
     <script>
-        // Sample AQI data for Punjab districts
+        // Illustrative AQI data for Rajasthan districts
         const districts = [
-            { name: "Ludhiana", aqi: 245, pollutant: "PM2.5" },
-            { name: "Amritsar", aqi: 198, pollutant: "PM2.5" },
-            { name: "Jalandhar", aqi: 185, pollutant: "PM10" },
-            { name: "Patiala", aqi: 172, pollutant: "PM2.5" },
-            { name: "Bathinda", aqi: 168, pollutant: "PM10" },
-            { name: "Mohali", aqi: 155, pollutant: "PM2.5" },
-            { name: "Firozpur", aqi: 142, pollutant: "PM10" },
-            { name: "Hoshiarpur", aqi: 128, pollutant: "PM2.5" },
-            { name: "Kapurthala", aqi: 118, pollutant: "PM2.5" },
-            { name: "Gurdaspur", aqi: 105, pollutant: "PM10" },
-            { name: "Faridkot", aqi: 98, pollutant: "PM2.5" },
-            { name: "Moga", aqi: 92, pollutant: "PM10" },
-            { name: "Sangrur", aqi: 87, pollutant: "PM2.5" },
-            { name: "Muktsar", aqi: 82, pollutant: "PM10" },
-            { name: "Rupnagar", aqi: 75, pollutant: "PM2.5" },
-            { name: "Fatehgarh Sahib", aqi: 68, pollutant: "PM10" },
-            { name: "Barnala", aqi: 62, pollutant: "PM2.5" },
-            { name: "Pathankot", aqi: 55, pollutant: "PM10" },
-            { name: "Tarn Taran", aqi: 48, pollutant: "PM2.5" },
-            { name: "Fazilka", aqi: 42, pollutant: "PM10" },
-            { name: "Sri Muktsar Sahib", aqi: 38, pollutant: "PM2.5" },
-            { name: "Shahid Bhagat Singh Nagar", aqi: 32, pollutant: "PM10" }
-        ];
+    { name: "Jaipur", aqi: 245, pollutant: "PM2.5" },
+    { name: "Jodhpur", aqi: 198, pollutant: "PM2.5" },
+    { name: "Udaipur", aqi: 185, pollutant: "PM10" },
+    { name: "Kota", aqi: 172, pollutant: "PM2.5" },
+    { name: "Ajmer", aqi: 168, pollutant: "PM10" },
+    { name: "Bikaner", aqi: 155, pollutant: "PM2.5" },
+    { name: "Alwar", aqi: 142, pollutant: "PM10" },
+    { name: "Bhilwara", aqi: 128, pollutant: "PM2.5" },
+    { name: "Sikar", aqi: 118, pollutant: "PM2.5" },
+    { name: "Pali", aqi: 105, pollutant: "PM10" },
+    { name: "Bharatpur", aqi: 98, pollutant: "PM2.5" },
+    { name: "Chittorgarh", aqi: 92, pollutant: "PM10" },
+    { name: "Sri Ganganagar", aqi: 87, pollutant: "PM2.5" },
+    { name: "Hanumangarh", aqi: 82, pollutant: "PM10" },
+    { name: "Barmer", aqi: 75, pollutant: "PM2.5" },
+    { name: "Jaisalmer", aqi: 68, pollutant: "PM10" },
+    { name: "Tonk", aqi: 62, pollutant: "PM2.5" },
+    { name: "Sawai Madhopur", aqi: 55, pollutant: "PM10" },
+    { name: "Bundi", aqi: 48, pollutant: "PM2.5" },
+    { name: "Jhalawar", aqi: 42, pollutant: "PM10" },
+    { name: "Nagaur", aqi: 38, pollutant: "PM2.5" },
+    { name: "Dausa", aqi: 32, pollutant: "PM10" }
+];
 
         // Sort districts by AQI (highest to lowest)
         districts.sort((a, b) => b.aqi - a.aqi);
@@ -363,7 +363,7 @@
                     y: {
                         title: {
                             display: true,
-                            text: 'Districts of Punjab',
+                            text: 'Districts of Rajasthan',
                             font: {
                                 size: 14,
                                 weight: 'bold'
