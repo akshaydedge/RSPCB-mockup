@@ -2046,81 +2046,500 @@
                         </tr>
 
 
-                        <tr>
-                            <td>SB-2026-127</td>
-                            <td>Sri Ganganagar</td>
-                            <td>Rural Cluster B</td>
-                            <td>31 Oct, 09:20</td>
-                            <td>High</td>
+     <!-- Stubble Burning Monitoring Dashboard -->
+<div id="safeguards" class="tab-content">
 
-                            <td>
-                                <span class="status status-field">
-                                    Field Verification
-                                </span>
-                            </td>
-                        </tr>
+    <style>
+        .stubble-header {
+            background: linear-gradient(135deg, #174e35, #2b8a57);
+            color: white;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
 
+        .stubble-header h2 {
+            margin: 0 0 7px;
+            font-size: 25px;
+            font-weight: 700;
+        }
 
-                        <tr>
-                            <td>SB-2026-126</td>
-                            <td>Alwar</td>
-                            <td>Agricultural Zone C</td>
-                            <td>31 Oct, 08:55</td>
-                            <td>Moderate</td>
+        .stubble-demo-note {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 12px;
+            border-radius: 18px;
+            background: #fff3cd;
+            color: #725b00;
+            font-size: 12px;
+            font-weight: 600;
+        }
 
-                            <td>
-                                <span class="status status-field">
-                                    Field Verification
-                                </span>
-                            </td>
-                        </tr>
+        .stubble-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px;
+            margin-bottom: 18px;
+            background: white;
+            border: 1px solid #e1e8e4;
+            border-radius: 10px;
+        }
 
+        .stubble-filters select,
+        .stubble-filters input {
+            min-width: 170px;
+            padding: 9px 10px;
+            border: 1px solid #ced8d1;
+            border-radius: 6px;
+        }
 
-                        <tr>
-                            <td>SB-2026-125</td>
-                            <td>Bharatpur</td>
-                            <td>Agricultural Zone D</td>
-                            <td>31 Oct, 08:15</td>
-                            <td>Moderate</td>
+        .stubble-filters button {
+            padding: 9px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #1f7a4c;
+            color: white;
+            font-weight: 600;
+        }
 
-                            <td>
-                                <span class="status status-resolved">
-                                    Resolved
-                                </span>
-                            </td>
-                        </tr>
+        .stubble-kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+        }
 
+        .stubble-kpi {
+            padding: 17px;
+            background: white;
+            border: 1px solid #e0e7e2;
+            border-left: 5px solid #1f7a4c;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
 
-                        <tr>
-                            <td>SB-2026-124</td>
-                            <td>Churu</td>
-                            <td>Rural Cluster E</td>
-                            <td>31 Oct, 07:40</td>
-                            <td>Low</td>
+        .stubble-kpi.red {
+            border-left-color: #c0392b;
+        }
 
-                            <td>
-                                <span class="status status-resolved">
-                                    Resolved
-                                </span>
-                            </td>
-                        </tr>
+        .stubble-kpi.orange {
+            border-left-color: #e67e22;
+        }
 
-                    </tbody>
+        .stubble-kpi.yellow {
+            border-left-color: #f4b942;
+        }
 
-                </table>
+        .stubble-kpi-label {
+            color: #68766e;
+            font-size: 13px;
+        }
 
-            </div>
+        .stubble-kpi-value {
+            color: #174e35;
+            font-size: 28px;
+            font-weight: 700;
+        }
 
-        </div>
+        .stubble-kpi-note {
+            color: #758078;
+            font-size: 12px;
+        }
 
+        .stubble-content-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
 
+        .stubble-panel {
+            padding: 17px;
+            background: white;
+            border: 1px solid #e0e7e2;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .stubble-panel h3 {
+            margin: 0 0 15px;
+            color: #174e35;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .stubble-map {
+            min-height: 290px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            border: 1px dashed #91ad99;
+            border-radius: 9px;
+            text-align: center;
+            color: #174e35;
+            font-weight: 600;
+            background:
+                radial-gradient(circle at 25% 32%, #c0392b 0 8px, transparent 9px),
+                radial-gradient(circle at 43% 51%, #e67e22 0 9px, transparent 10px),
+                radial-gradient(circle at 69% 34%, #c0392b 0 8px, transparent 9px),
+                radial-gradient(circle at 76% 67%, #f4b942 0 8px, transparent 9px),
+                radial-gradient(circle at 35% 73%, #e67e22 0 7px, transparent 8px),
+                linear-gradient(135deg, #edf5ef, #d8e9dc);
+        }
+
+        .stubble-district {
+            margin-bottom: 17px;
+        }
+
+        .stubble-district-heading {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        .stubble-progress {
+            height: 9px;
+            overflow: hidden;
+            background: #e9eeeb;
+            border-radius: 10px;
+        }
+
+        .stubble-progress span {
+            display: block;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .stubble-alert {
+            margin-top: 10px;
+            padding: 11px;
+            background: #fff7ed;
+            border-left: 4px solid #e67e22;
+            border-radius: 7px;
+            font-size: 13px;
+        }
+
+        .stubble-alert.high {
+            background: #fff0f0;
+            border-left-color: #c0392b;
+        }
+
+        .stubble-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .stubble-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .stubble-table th {
+            padding: 11px;
+            background: #174e35;
+            color: white;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .stubble-table td {
+            padding: 11px;
+            border-bottom: 1px solid #e3e9e5;
+            white-space: nowrap;
+        }
+
+        .stubble-status {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .stubble-status-open {
+            background: #fde2e2;
+            color: #a4262c;
+        }
+
+        .stubble-status-field {
+            background: #fff1cc;
+            color: #806000;
+        }
+
+        .stubble-status-resolved {
+            background: #dff3e7;
+            color: #146c43;
+        }
+
+        @media (max-width: 992px) {
+            .stubble-kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stubble-content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stubble-kpi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <div class="stubble-header">
+        <h2>
+            <i class="fas fa-fire-alt"></i>
+            Crop Residue &amp; Stubble Burning Monitoring
+        </h2>
+
+        <p>
+            District-level monitoring of crop-residue burning alerts,
+            verification and response across Rajasthan.
+        </p>
+
+        <span class="stubble-demo-note">
+            DEMO DASHBOARD: All locations, figures and incident data are illustrative
+        </span>
     </div>
 
-</div>
+    <div class="stubble-filters">
+        <select aria-label="Select season">
+            <option>Kharif Season 2026</option>
+            <option>Rabi Season 2026</option>
+        </select>
+
+        <select aria-label="Select district">
+            <option>All Districts</option>
+            <option>Hanumangarh</option>
+            <option>Sri Ganganagar</option>
+            <option>Alwar</option>
+            <option>Bharatpur</option>
+            <option>Churu</option>
+        </select>
+
+        <input type="date" value="2026-10-31" aria-label="Select monitoring date">
+
+        <button type="button">
+            <i class="fas fa-filter"></i>
+            Apply Filter
+        </button>
+    </div>
+
+    <div class="stubble-kpi-grid">
+        <div class="stubble-kpi red">
+            <div class="stubble-kpi-label">Fire Alerts Detected</div>
+            <div class="stubble-kpi-value">128</div>
+            <div class="stubble-kpi-note">Illustrative seasonal alerts</div>
+        </div>
+
+        <div class="stubble-kpi orange">
+            <div class="stubble-kpi-label">Under Verification</div>
+            <div class="stubble-kpi-value">24</div>
+            <div class="stubble-kpi-note">Pending field verification</div>
+        </div>
+
+        <div class="stubble-kpi">
+            <div class="stubble-kpi-label">Verified Incidents</div>
+            <div class="stubble-kpi-value">76</div>
+            <div class="stubble-kpi-note">Confirmed by field teams</div>
+        </div>
+
+        <div class="stubble-kpi yellow">
+            <div class="stubble-kpi-label">Resolved Cases</div>
+            <div class="stubble-kpi-value">61</div>
+            <div class="stubble-kpi-note">Action recorded and closed</div>
+        </div>
+    </div>
+
+    <div class="stubble-content-grid">
+        <div class="stubble-panel">
+            <h3>
+                <i class="fas fa-map-marked-alt"></i>
+                Rajasthan Fire Alert Heat Map
+            </h3>
+
+            <div class="stubble-map">
+                <div>
+                    Rajasthan District Fire-Alert Hotspot Visualization
+                    <br>
+                    <small>Illustrative monitoring view</small>
+                </div>
             </div>
         </div>
-    
 
+        <div class="stubble-panel">
+            <h3>
+                <i class="fas fa-chart-bar"></i>
+                District-wise Alert Intensity
+            </h3>
+
+            <div class="stubble-district">
+                <div class="stubble-district-heading">
+                    <span>Hanumangarh</span>
+                    <strong>32 alerts</strong>
+                </div>
+                <div class="stubble-progress">
+                    <span style="width: 88%; background: #c0392b;"></span>
+                </div>
+            </div>
+
+            <div class="stubble-district">
+                <div class="stubble-district-heading">
+                    <span>Sri Ganganagar</span>
+                    <strong>27 alerts</strong>
+                </div>
+                <div class="stubble-progress">
+                    <span style="width: 74%; background: #d35400;"></span>
+                </div>
+            </div>
+
+            <div class="stubble-district">
+                <div class="stubble-district-heading">
+                    <span>Alwar</span>
+                    <strong>19 alerts</strong>
+                </div>
+                <div class="stubble-progress">
+                    <span style="width: 53%; background: #e67e22;"></span>
+                </div>
+            </div>
+
+            <div class="stubble-district">
+                <div class="stubble-district-heading">
+                    <span>Bharatpur</span>
+                    <strong>16 alerts</strong>
+                </div>
+                <div class="stubble-progress">
+                    <span style="width: 44%; background: #f39c12;"></span>
+                </div>
+            </div>
+
+            <div class="stubble-district">
+                <div class="stubble-district-heading">
+                    <span>Churu</span>
+                    <strong>11 alerts</strong>
+                </div>
+                <div class="stubble-progress">
+                    <span style="width: 31%; background: #f4b942;"></span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 24px;">
+                <i class="fas fa-bell"></i>
+                Recent Priority Alerts
+            </h3>
+
+            <div class="stubble-alert high">
+                <strong>High-intensity fire signature detected</strong>
+                <br>
+                Illustrative location: Hanumangarh rural cluster
+            </div>
+
+            <div class="stubble-alert">
+                <strong>Field verification team assigned</strong>
+                <br>
+                Illustrative location: Sri Ganganagar rural cluster
+            </div>
+        </div>
+    </div>
+
+    <div class="stubble-panel">
+        <h3>
+            <i class="fas fa-clipboard-check"></i>
+            Incident Verification &amp; Response Tracker
+        </h3>
+
+        <div class="stubble-table-wrapper">
+            <table class="stubble-table">
+                <thead>
+                    <tr>
+                        <th>Alert ID</th>
+                        <th>District</th>
+                        <th>Illustrative Location</th>
+                        <th>Detection Time</th>
+                        <th>Risk Level</th>
+                        <th>Response Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>SB-2026-128</td>
+                        <td>Hanumangarh</td>
+                        <td>Rural Cluster A</td>
+                        <td>31 Oct, 09:45</td>
+                        <td>High</td>
+                        <td>
+                            <span class="stubble-status stubble-status-open">
+                                Open
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>SB-2026-127</td>
+                        <td>Sri Ganganagar</td>
+                        <td>Rural Cluster B</td>
+                        <td>31 Oct, 09:20</td>
+                        <td>High</td>
+                        <td>
+                            <span class="stubble-status stubble-status-field">
+                                Field Verification
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>SB-2026-126</td>
+                        <td>Alwar</td>
+                        <td>Agricultural Zone C</td>
+                        <td>31 Oct, 08:55</td>
+                        <td>Moderate</td>
+                        <td>
+                            <span class="stubble-status stubble-status-field">
+                                Field Verification
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>SB-2026-125</td>
+                        <td>Bharatpur</td>
+                        <td>Agricultural Zone D</td>
+                        <td>31 Oct, 08:15</td>
+                        <td>Moderate</td>
+                        <td>
+                            <span class="stubble-status stubble-status-resolved">
+                                Resolved
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>SB-2026-124</td>
+                        <td>Churu</td>
+                        <td>Rural Cluster E</td>
+                        <td>31 Oct, 07:40</td>
+                        <td>Low</td>
+                        <td>
+                            <span class="stubble-status stubble-status-resolved">
+                                Resolved
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>                  
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
